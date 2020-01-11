@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
 import 'bulma/css/bulma.css'
+import {Title} from './components/Title';
 
 function App() {
   return (
     <div className="App">
-      <h3>Search Movies</h3>
+      <Title>Buscador de películas</Title>
     </div>
   );
 }
