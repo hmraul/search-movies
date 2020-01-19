@@ -8,10 +8,16 @@ import {SearchForm} from './components/SearchForm';
 import {MoviesList} from './components/MoviesList'
 
 class App extends Component {
-  state = {results: []}
+  state = {searched: false, results: []}
 
   _handleResults = (results) => {
-    this.setState({results})
+    this.setState({results, searched: true})
+  }
+
+  _handleSearch = () => {
+      return this.state.results.length === 0
+        ? <p><span role="img" aria-label="Sad">😞</span> Sin resultados</p>
+        : <MoviesList movies={this.state.results} />
   }
 
   render() {
@@ -22,10 +28,10 @@ class App extends Component {
         <SearchForm onResults={this._handleResults} />
       </div>
       {
-      this.state.results.length === 0
-        ? <p>Sin resultados</p>
-        : <MoviesList movies={this.state.results} />
-      }
+      this.state.searched === true
+        ? this._handleSearch()
+        : null
+      }      
     </div>
   )
   }
