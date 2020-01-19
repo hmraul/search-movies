@@ -4,9 +4,7 @@ import {Title} from '../components/Title';
 import {SearchForm} from '../components/SearchForm'
 import { MoviesList } from '../components/MoviesList'
 
-
 import '../styles/styles.css';
-
 
 export class Home extends Component {
   state = {searched: false, results: []}
