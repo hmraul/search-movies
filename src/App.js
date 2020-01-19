@@ -5,6 +5,7 @@ import './styles/styles.css';
 import 'bulma/css/bulma.css'
 import {Title} from './components/Title';
 import {SearchForm} from './components/SearchForm';
+import {Movie} from './components/Movie'
 
 class App extends Component {
   state = {results: []}
@@ -16,7 +17,8 @@ class App extends Component {
   _renderResults = () => {
     const { results } = this.state
     return results.map(movie => {
-    return <p key={movie.imdbID}>{movie.Title}</p>
+      return <Movie key={movie.imdbID}>{movie}</Movie>
+      //return <p key={movie.imdbID}>{movie.Title}</p>
     })
   }
 
