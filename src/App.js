@@ -4,8 +4,10 @@ import './styles/styles.css';
 
 import 'bulma/css/bulma.css'
 import {Title} from './components/Title';
-import {SearchForm} from './components/SearchForm';
+import {SearchForm} from './components/SearchForm'
 import {MoviesList} from './components/MoviesList'
+
+import {Detail} from './pages/Detail'
 
 class App extends Component {
   state = {searched: false, results: []}
@@ -21,19 +23,26 @@ class App extends Component {
   }
 
   render() {
-  return (
-    <div className="App">
-      <Title>Buscador de películas</Title>
-      <div className="SearchForm-wrapper">
-        <SearchForm onResults={this._handleResults} />
+    const url = new URL(document.location)
+    const hasId = url.searchParams.has('id')
+
+    if (hasId) {
+      return <Detail id={url.searchParams.get('id')} />
+    }
+
+    return (
+      <div className="App">
+        <Title>Buscador de películas</Title>
+        <div className="SearchForm-wrapper">
+          <SearchForm onResults={this._handleResults} />
+        </div>
+        {
+        this.state.searched === true
+          ? this._handleSearch()
+          : null
+        }      
       </div>
-      {
-      this.state.searched === true
-        ? this._handleSearch()
-        : null
-      }      
-    </div>
-  )
+    )
   }
 }
 
