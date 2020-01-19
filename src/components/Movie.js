@@ -10,7 +10,6 @@ export class Movie extends Component {
 
   render() {
     const {Poster, Title, Year} = this.props.children
-    //debugger
     console.log(this.props)
     console.log({Poster, Title, Year})
 
