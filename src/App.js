@@ -23,19 +23,26 @@ class App extends Component {
   }
 
   render() {
-  return (
-    <div className="App">
-      <Title>Buscador de películas</Title>
-      <div className="SearchForm-wrapper">
-        <SearchForm onResults={this._handleResults} />
+    const url = new URL(document.location)
+    const hasId = url.searchParams.has('id')
+
+    if (hasId) {
+      return <Detail id={url.searchParams.get('id')} />
+    }
+
+    return (
+      <div className="App">
+        <Title>Buscador de películas</Title>
+        <div className="SearchForm-wrapper">
+          <SearchForm onResults={this._handleResults} />
+        </div>
+        {
+        this.state.searched === true
+          ? this._handleSearch()
+          : null
+        }      
       </div>
-      {
-      this.state.searched === true
-        ? this._handleSearch()
-        : null
-      }      
-    </div>
-  )
+    )
   }
 }
 
