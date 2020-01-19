@@ -10,8 +10,6 @@ export class Movie extends Component {
 
   render() {
     const {Poster, Title, Year} = this.props.children
-    console.log(this.props)
-    console.log({Poster, Title, Year})
 
     return (
       <div className="card">
