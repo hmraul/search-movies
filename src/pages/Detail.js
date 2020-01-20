@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import { HomeLinkButton } from '../components/HomeLinkButton'
 
 import DetailColumn from './DetailColumn'
-
-
 
 const API_KEY = '65ef3365'
 
@@ -42,7 +41,7 @@ export class Detail extends Component {
     const {Actors, Director, Plot, Poster, Title, Year} = this.state.movie
     return (
       <div>
-        <button onClick={this._goBack}>Volver</button>
+        <HomeLinkButton />
         <div className="card-image">
           <figure className="image">
             <img
